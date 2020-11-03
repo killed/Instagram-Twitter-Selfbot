@@ -1,5 +1,7 @@
 # Setup
 
+Open your terminal and type `npm i`
+
 Go to `\data\` and you'll find a file called `config.json`
 
 Default prefix is `!?`
