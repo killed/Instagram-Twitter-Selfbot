@@ -1,0 +1,15 @@
+{
+    "discord":
+    {
+        "token": "xxx",
+        "prefix": "!?"
+    },
+    "instagram":
+    {
+        "sessionId": "xxx"
+    },
+    "twitch":
+    {
+        "username": "xxx"
+    }
+}
