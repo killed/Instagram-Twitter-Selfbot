@@ -1,3 +1,13 @@
+# To do!
+
+- [x] Follow user
+- [x] Unfollow user
+- [ ] Update @
+- [ ] Update Bio
+- [ ] Lookup User
+- [ ] Like Users Recent Post
+- [ ] Get Users Most Recent Post
+
 # Setup
 
 Open your terminal and type `npm i`
