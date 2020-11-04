@@ -14,7 +14,7 @@ exports.run = (bot, message, suffix, help) => {
     if (!suffix)
         return utility.parameters("lookup", message);
 
-    https.get("i.instagram.com", "/api/v1/users/" + suffix + "/usernameinfo/", config.instagram.sessionId, config.instagram.userAgents.mobile).then(body => {
+    request.get("i.instagram.com", "/api/v1/users/" + suffix + "/usernameinfo/", config.instagram.sessionId, config.instagram.userAgents.mobile).then(body => {
         if (body.indexOf("\"status\": \"ok\"") > -1) {
             body = JSON.parse(body).user;
 
