@@ -7,11 +7,11 @@ const https = require("./http");
 // Variables
 var config = require("../../data/config");
 
-module.exports.buildPostData = function(newUsername) {
+module.exports.getAccountInformation = function() {
     return new Promise((resolve, reject) => {
         https.get("www.instagram.com", "/accounts/edit/?__a=1", config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
             if (body.includes("username") && body.includes("email")) {
-                resolve(JSON.parse(body).form_data.email);
+                resolve(JSON.parse(body).form_data);
             } else
                 reject(true);
         });

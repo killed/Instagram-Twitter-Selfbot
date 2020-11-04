@@ -19,22 +19,21 @@ exports.run = (bot, message, suffix, help) => {
             body = JSON.parse(body).user;
 
             var embed = utility.createEmbed("Command completed", false);
-            utility.setDescription(`:white_check_mark: | Lookup results for ${suffix}`);
 
             if (body.hd_profile_pic_url_info)
                 embed.setThumbnail(body.hd_profile_pic_url_info.url);
 
             if (body.full_name && body.full_name.length >= 1)
-                embed.addField("Full Name", body.full_name, true);
-
-            if (body.biography && body.biography.length >= 1)
-                embed.addField("Biography", body.biography, true);
-
-            embed.addField("User ID", body.pk, true);
+                embed.setDescription(`:white_check_mark: | Lookup result for **@${suffix}** - ${body.full_name} - ${body.pk}`);
+            else
+                embed.setDescription(`:white_check_mark: | Lookup result for **@${suffix}**`);
 
             embed.addField("Followers", utility.format(body.follower_count), true);
             embed.addField("Following", utility.format(body.following_count), true);
             embed.addField("Mutual Followers", utility.format(body.mutual_followers_count), true);
+
+            if (body.biography && body.biography.length >= 1 && body.biography.length <= 2000)
+                embed.addField("Biography", body.biography, false);
 
             message.edit({ embed: embed });
         } else
