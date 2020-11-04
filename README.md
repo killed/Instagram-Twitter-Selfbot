@@ -27,11 +27,15 @@ Go to `\data\` and you'll find a file called `config.json`
 
 Default prefix is `!?`
 
+# Instagram Help
+
 Setup the basic information like filling out your Discord token and twitch username then you'll see something called "sessionId" you'll need to login to your Instagram on your computer to do this part.
 
 Once you've logged in go to the home page and open inspect element and go to the `Application` tab and follow this screenshot - 
 
 ![Instagram Help](https://i.imgur.com/0AmEqCI.png)
+
+# Twitter Help
 
 To setup the Twitter part load twitter and login like normal then inspect element and go to the `Application` tab and follow this screenshot -
 
