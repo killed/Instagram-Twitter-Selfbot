@@ -5,8 +5,8 @@
 - [x] Update @
 - [x] Update Bio
 - [x] Lookup User
-- [ ] Like Users Recent Post
-- [ ] Get Users Most Recent Post
+- [x] Like Users Recent Post
+- [x] Get Users Most Recent Post
 
 # Setup
 
