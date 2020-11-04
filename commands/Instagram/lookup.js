@@ -7,7 +7,7 @@ exports.run = (bot, message, suffix, help) => {
         var embed = utility.createEmbed("Lookup");
         embed.setDescription("More details for the **lookup** command.");
         embed.addField("Command usage", `${bot.config.discord.prefix}lookup <username>`);
-        embed.addField("Description", "Easily lookup a user on Instagram.");
+        embed.addField("Description", "Easily lookup a user on the social media platform.");
         return message.edit({ embed: embed });
     }
 

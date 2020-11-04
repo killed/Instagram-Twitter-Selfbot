@@ -7,7 +7,7 @@ exports.run = (bot, message, suffix, help) => {
         var embed = utility.createEmbed("Recent");
         embed.setDescription("More details for the **recent** command.");
         embed.addField("Command usage", `${bot.config.discord.prefix}recent <type> <username>`);
-        embed.addField("Description", "Easily get or like a users post on Instagram.");
+        embed.addField("Description", "Easily get or like a users post on the social media platform.");
         return message.edit({ embed: embed });
     }
 

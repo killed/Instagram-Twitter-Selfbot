@@ -7,7 +7,7 @@ exports.run = (bot, message, suffix, help) => {
         var embed = utility.createEmbed("Follow");
         embed.setDescription("More details for the **follow** command.");
         embed.addField("Command usage", `${bot.config.discord.prefix}follow <username>`);
-        embed.addField("Description", "Easily follow someone on Instagram.");
+        embed.addField("Description", "Easily follow someone on the social media platform.");
         return message.edit({ embed: embed });
     }
 

@@ -7,7 +7,7 @@ exports.run = (bot, message, suffix, help) => {
         var embed = utility.createEmbed("Unfollow");
         embed.setDescription("More details for the **unfollow** command.");
         embed.addField("Command usage", `${bot.config.discord.prefix}unfollow <username>`);
-        embed.addField("Description", "Easily unfollow someone on Instagram.");
+        embed.addField("Description", "Easily unfollow someone on the social media platform.");
         return message.edit({ embed: embed });
     }
 

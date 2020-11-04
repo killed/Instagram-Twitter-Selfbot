@@ -1,12 +1,23 @@
 # To do!
 
-- [x] Follow user
-- [x] Unfollow user
+# Instagram
+
+- [x] Follow User
+- [x] Unfollow User
 - [x] Update @
 - [x] Update Bio
 - [x] Lookup User
 - [x] Like Users Recent Post
 - [x] Get Users Most Recent Post
+
+# Twitter
+
+- [x] Update @
+- [x] Update Bio
+- [ ] Follow User
+- [ ] Unfollow User
+- [ ] Lookup User
+- [ ] Tweet
 
 # Setup
 
@@ -18,9 +29,13 @@ Default prefix is `!?`
 
 Setup the basic information like filling out your Discord token and twitch username then you'll see something called "sessionId" you'll need to login to your Instagram on your computer to do this part.
 
-Once you've logged in go to the home page and open inspect element and go to the `Application` tab and follow these screenshots - 
+Once you've logged in go to the home page and open inspect element and go to the `Application` tab and follow this screenshot - 
 
-![Help lol](https://i.imgur.com/0AmEqCI.png)
+![Instagram Help](https://i.imgur.com/0AmEqCI.png)
+
+To setup the Twitter part load twitter and login like normal then inspect element and go to the `Application` tab and follow this screenshot -
+
+![Twitter Help](https://i.imgur.com/6zDps9E.png)
 
 # Customization
 

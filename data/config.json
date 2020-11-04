@@ -18,6 +18,10 @@
             "key": "d824458730434607defeba6566f92fc4bb4f34001c06c4d221e761a174e7b194"
         }
     },
+    "twitter":
+    {
+        "authToken": "xxx"
+    },
     "twitch":
     {
         "username": "xxx"
