@@ -2,6 +2,7 @@
 
 // Libraries
 const discord = require("discord.js");
+const numeral = require("numeral");
 
 // Includes
 var index = require("../index.js");
@@ -47,4 +48,10 @@ module.exports.sendHelp = function(categories, commands, message) {
 
     embed.setDescription(`Below is a list of all my commands (${commandsCount} total), to see more about a command or how to use it simply issue \`${index.bot.config.discord.prefix}help <command name>\` and you'll see its usage.`);
     message.edit({ embed: embed });
+}
+
+module.exports.format = function(amount) {
+    var number = numeral(amount);
+
+    return number.format();
 }

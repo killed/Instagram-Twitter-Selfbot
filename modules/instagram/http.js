@@ -4,19 +4,22 @@
 const https = require("https");
 const zlib = require("zlib");
 
-module.exports.get = function(endpoint, sessionId) {
+// Variables
+var utility = require("./utility");
+
+module.exports.get = function(host, endpoint, sessionId, userAgent) {
     return new Promise((resolve, reject) => {
         https.request({
             method: "GET",
-            timeout: 1000 * 10,
-            hostname: "www.instagram.com",
+            timeout: 1000 * 5,
+            hostname: host,
             path: endpoint,
             headers: {
                 "Accept": "*/*",
                 "Accept-Language": "en-US",
                 "Accept-Encoding": "gzip, deflate",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.310",
-                "x-csrftoken": randomString(32),
+                "User-Agent": userAgent,
+                "x-csrftoken": utility.randomString(32),
                 "Cookie": `sessionid=${sessionId}`
             },
         }, res => {
@@ -38,20 +41,20 @@ module.exports.get = function(endpoint, sessionId) {
     });
 }
 
-module.exports.post = function(endpoint, postData, sessionId) {
+module.exports.post = function(host, endpoint, postData, sessionId, userAgent) {
     return new Promise((resolve, reject) => {
         const req = https.request({
             method: "POST",
-            timeout: 3000,
-            hostname: "www.instagram.com",
+            timeout: 1000 * 5,
+            hostname: host,
             path: endpoint,
             headers: {
                 "Accept": "*/*",
                 "Accept-Language": "en-US",
                 "Accept-Encoding": "gzip, deflate",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.310",
+                "User-Agent": userAgent,
                 "Content-Type": "application/x-www-form-urlencoded",
-                "x-csrftoken": randomString(32),
+                "x-csrftoken": utility.randomString(32),
                 "Cookie": `sessionid=${sessionId}`
             },
         }, res => {
@@ -73,21 +76,21 @@ module.exports.post = function(endpoint, postData, sessionId) {
     });
 }
 
-module.exports.postData = function(endpoint, postData, sessionId) {
+module.exports.postData = function(host, endpoint, postData, sessionId, userAgent) {
     return new Promise((resolve, reject) => {
         const req = https.request({
             method: "POST",
-            timeout: 3000,
-            hostname: "www.instagram.com",
+            timeout: 1000 * 5,
+            hostname: host,
             path: endpoint,
             headers: {
                 "Accept": "*/*",
                 "Accept-Language": "en-US",
                 "Accept-Encoding": "gzip, deflate",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.310",
+                "User-Agent": userAgent,
                 "Content-Type": "application/x-www-form-urlencoded",
                 "Content-Length": postData.length,
-                "x-csrftoken": randomString(32),
+                "x-csrftoken": utility.randomString(32),
                 "Cookie": `sessionid=${sessionId}`
             },
         }, res => {
@@ -110,14 +113,4 @@ module.exports.postData = function(endpoint, postData, sessionId) {
         req.write(postData);
         req.end();
     });
-}
-
-function randomString(length) {
-    var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i = 0; i < length; i++)
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-
-    return result;
 }

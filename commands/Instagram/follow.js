@@ -14,7 +14,7 @@ exports.run = (bot, message, suffix, help) => {
     if (!suffix)
         return utility.parameters("follow", message);
 
-    request.get(`/web/search/topsearch/?context=blended&query=${suffix}&rank_token=0.8730298813193997&include_reel=false`, config.instagram.sessionId).then(body => {
+    request.get(`/web/search/topsearch/?context=blended&query=${suffix}&rank_token=0.8730298813193997&include_reel=false`, config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
         body = JSON.parse(body);
 
         if (body.users.length < 1)

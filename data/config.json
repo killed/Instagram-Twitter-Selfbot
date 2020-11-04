@@ -6,7 +6,17 @@
     },
     "instagram":
     {
-        "sessionId": "xxx"
+        "sessionId": "xxx",
+        "userAgents":
+        {
+            "mobile": "Instagram 129.0.0.29.119 Android (28/9; 280dpi; 720x1382; samsung; SM-A105FN; a10; exynos7885; en_US; 199325890)",
+            "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.310"
+        },
+        "signature":
+        {
+            "keyVersion": "4",
+            "key": "d824458730434607defeba6566f92fc4bb4f34001c06c4d221e761a174e7b194"
+        }
     },
     "twitch":
     {
