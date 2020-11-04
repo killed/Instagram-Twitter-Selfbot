@@ -2,9 +2,9 @@
 
 - [x] Follow user
 - [x] Unfollow user
-- [ ] Update @
-- [ ] Update Bio
-- [ ] Lookup User
+- [x] Update @
+- [x] Update Bio
+- [x] Lookup User
 - [ ] Like Users Recent Post
 - [ ] Get Users Most Recent Post
 
