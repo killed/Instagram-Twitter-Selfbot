@@ -17,7 +17,7 @@ exports.run = (bot, message, suffix, help) => {
         return utility.parameters("bio", message);
 
     var type = suffix.split(" ")[0];
-    var bio = suffix.split(" ")[1];
+    var bio = suffix.substring(type.length + 1);
 
     if (type.toLowerCase() == "instagram") {
         instagramUtility.getAccountInformation().then(account => {

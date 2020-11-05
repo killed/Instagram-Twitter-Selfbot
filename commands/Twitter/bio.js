@@ -7,10 +7,10 @@ exports.run = (bot, message, suffix, help) => {
     var csrfToken = twitterUtility.randomCsrf();
 
     var type = suffix.split(" ")[0];
-    var bio = suffix.split(" ")[1];
+    var bio = suffix.substring(type.length + 1);
 
     if (type.toLowerCase() == "twitter") {
-        request.post("/1.1/account/update_profile.json", "description=" + bio, config.twitter.authToken, csrfToken).then(body => {
+        request.post("api.twitter.com", "/1.1/account/update_profile.json", "description=" + bio, config.twitter.authToken, csrfToken).then(body => {
             if (body.indexOf(`description":"${bio}"`) > -1)
                 utility.success(`Successfully updated bio to **${bio}**`, message);
             else

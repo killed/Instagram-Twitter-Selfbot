@@ -14,23 +14,28 @@ exports.run = (bot, message, suffix, help) => {
     if (!suffix)
         return utility.parameters("unfollow", message);
 
-    request.get("www.instagram.com", `/web/search/topsearch/?context=blended&query=${suffix}&include_reel=false`, config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
-        body = JSON.parse(body);
+    var type = suffix.split(" ")[0];
+    var username = suffix.split(" ")[1];
 
-        if (body.users.length < 1)
-            return utility.error("No user found.", message);
+    if (type.toLowerCase() == "instagram") {
+        request.get("www.instagram.com", `/web/search/topsearch/?context=blended&query=${username}&include_reel=false`, config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
+            body = JSON.parse(body);
 
-        var result = body.users.filter(account => account.user.username === suffix);
+            if (body.users.length < 1)
+                return utility.error("No user found.", message);
 
-        if (!result || result.length < 1)
-            return utility.error(`No user with the username ${suffix} exists`, message);
-        else
-            request.postData("www.instagram.com", `/web/friendships/${result[0].user.pk}/unfollow/`, "", config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
-                utility.success(`Successfully unfollowed [@${suffix}](https://www.instagram.com/${suffix})`, message);
-            }).catch(error => {
-                utility.error(`An error occurred while trying to unfollow ${suffix}`, message);
-            });
-    }).catch(error => {
-        utility.error(`An error occurred while searching for ${suffix}`, message);
-    });
+            var result = body.users.filter(account => account.user.username === username);
+
+            if (!result || result.length < 1)
+                return utility.error(`No user with the username ${username} exists`, message);
+            else
+                request.postData("www.instagram.com", `/web/friendships/${result[0].user.pk}/unfollow/`, "", config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
+                    utility.success(`Successfully unfollowed [@${username}](https://www.instagram.com/${username})`, message);
+                }).catch(error => {
+                    utility.error(`An error occurred while trying to unfollow ${username}`, message);
+                });
+        }).catch(error => {
+            utility.error(`An error occurred while searching for ${username}`, message);
+        });
+    }
 };

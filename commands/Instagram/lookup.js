@@ -14,29 +14,34 @@ exports.run = (bot, message, suffix, help) => {
     if (!suffix)
         return utility.parameters("lookup", message);
 
-    request.get("i.instagram.com", "/api/v1/users/" + suffix + "/usernameinfo/", config.instagram.sessionId, config.instagram.userAgents.mobile).then(body => {
-        if (body.indexOf("\"status\": \"ok\"") > -1) {
-            body = JSON.parse(body).user;
+    var type = suffix.split(" ")[0];
+    var username = suffix.split(" ")[1];
 
-            var embed = utility.createEmbed("Command completed", false);
+    if (type.toLowerCase() == "instagram") {
+        request.get("i.instagram.com", "/api/v1/users/" + username + "/usernameinfo/", config.instagram.sessionId, config.instagram.userAgents.mobile).then(body => {
+            if (body.indexOf("\"status\": \"ok\"") > -1) {
+                body = JSON.parse(body).user;
 
-            if (body.hd_profile_pic_url_info)
-                embed.setThumbnail(body.hd_profile_pic_url_info.url);
+                var embed = utility.createEmbed("Command completed", false);
 
-            if (body.full_name && body.full_name.length >= 1)
-                embed.setDescription(`:white_check_mark: | Lookup result for **@${suffix}** - ${body.full_name} - ${body.pk}`);
-            else
-                embed.setDescription(`:white_check_mark: | Lookup result for **@${suffix}**`);
+                if (body.hd_profile_pic_url_info)
+                    embed.setThumbnail(body.hd_profile_pic_url_info.url);
 
-            embed.addField("Followers", utility.format(body.follower_count), true);
-            embed.addField("Following", utility.format(body.following_count), true);
-            embed.addField("Mutual Followers", utility.format(body.mutual_followers_count), true);
+                if (body.full_name && body.full_name.length >= 1)
+                    embed.setDescription(`:white_check_mark: | Lookup result for **@${username}** - ${body.full_name} - ${body.pk}`);
+                else
+                    embed.setDescription(`:white_check_mark: | Lookup result for **@${username}**`);
 
-            if (body.biography && body.biography.length >= 1 && body.biography.length <= 2000)
-                embed.addField("Biography", body.biography, false);
+                embed.addField("Followers", utility.format(body.follower_count), true);
+                embed.addField("Following", utility.format(body.following_count), true);
+                embed.addField("Mutual Followers", utility.format(body.mutual_followers_count), true);
 
-            message.edit({ embed: embed });
-        } else
-            return utility.error("User not found", message);
-    }).catch(error => { utility.error("An error occurred while trying to lookup user", message); });
+                if (body.biography && body.biography.length >= 1 && body.biography.length <= 2000)
+                    embed.addField("Biography", body.biography, false);
+
+                message.edit({ embed: embed });
+            } else
+                return utility.error("User not found", message);
+        }).catch(error => { utility.error("An error occurred while trying to lookup user", message); });
+    }
 };

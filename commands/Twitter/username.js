@@ -10,9 +10,9 @@ exports.run = (bot, message, suffix, help) => {
     var username = suffix.split(" ")[1];
 
     if (type.toLowerCase() == "twitter") {
-        request.get("/api/v1/username_lookups?username=" + username).then(body => {
+        request.get("help.twitter.com", "/api/v1/username_lookups?username=" + username).then(body => {
             if (body.indexOf("s\":f") != -1) {
-                request.post("/1.1/account/settings.json", "screen_name=" + username, config.twitter.authToken, csrfToken).then(body => {
+                request.post("api.twitter.com", "/1.1/account/settings.json", "screen_name=" + username, config.twitter.authToken, csrfToken).then(body => {
                     if (body.indexOf(`screen_name":"${username}"`) > -1)
                         utility.success(`Successfully updated username to [@${username}](https://instagram.com/${username})`, message);
                     else

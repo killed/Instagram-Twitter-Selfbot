@@ -4,17 +4,20 @@
 const zlib = require("zlib");
 const https = require("https");
 
-module.exports.get = function(endpoint) {
+module.exports.get = function(host, endpoint, authToken, csrfToken) {
     return new Promise((resolve, reject) => {
         https.request({
             method: "GET",
             timeout: 1000 * 5,
-            hostname: "help.twitter.com",
+            hostname: host,
             path: endpoint,
             headers: {
                 "Accept": "*/*",
                 "Accept-Language": "en-US",
                 "Accept-Encoding": "gzip, deflate",
+                "X-CSRF-Token": csrfToken,
+                "Authorization": "Bearer " + "AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
+                "Cookie": "auth_token=" + authToken + "; ct0=" + csrfToken,
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0"
             },
         }, res => {
@@ -36,12 +39,12 @@ module.exports.get = function(endpoint) {
     });
 }
 
-module.exports.post = function(endpoint, postData, authToken, csrfToken) {
+module.exports.post = function(host, endpoint, postData, authToken, csrfToken) {
     return new Promise((resolve, reject) => {
         const req = https.request({
             method: "POST",
             timeout: 1000 * 5,
-            hostname: "api.twitter.com",
+            hostname: host,
             path: endpoint,
             headers: {
                 "Accept": "*/*",
