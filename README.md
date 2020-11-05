@@ -14,10 +14,13 @@
 
 - [x] Update @
 - [x] Update Bio
-- [ ] Follow User
-- [ ] Unfollow User
-- [ ] Lookup User
-- [ ] Tweet
+- [x] Follow User
+- [x] Unfollow User
+- [x] Lookup User
+- [x] Tweet
+- [x] Random tweet from hashtag
+- [ ] Like Users Most Recent Tweet
+- [ ] Get Users Most Recent Tweet
 
 # Setup
 

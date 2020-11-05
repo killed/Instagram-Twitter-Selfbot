@@ -30,7 +30,7 @@ exports.run = (bot, message, suffix, help) => {
                 return utility.error(`No user with the username ${username} exists`, message);
             else
                 request.postData("www.instagram.com", `/web/friendships/${result[0].user.pk}/follow/`, "", config.instagram.sessionId, config.instagram.userAgents.browser).then(body => {
-                    utility.success(`Successfully followed [@${username}](https://www.instagram.com/${username})`, message);
+                    utility.success(`Successfully followed [@${username}](https://www.instagram.com/${username}) on instagram`, message);
                 }).catch(error => {
                     utility.error(`An error occurred while trying to follow ${username}`, message);
                 });

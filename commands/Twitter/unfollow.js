@@ -21,7 +21,7 @@ exports.run = (bot, message, suffix, help) => {
                 else {
                     request.post("api.twitter.com", "/1.1/friendships/destroy.json", "id=" + result[0].id, config.twitter.authToken, csrfToken).then(body => {
                         if (body.indexOf(`screen_name":"${username}"`) > -1)
-                            utility.success(`Successfully unfollowed [@${username}](https://twitter.com/${username})`, message);
+                            utility.success(`Successfully unfollowed [@${username}](https://twitter.com/${username}) on Twitter`, message);
                         else
                             utility.error(`Failed to unfollow ${username}`, message);
                     }).catch(error => { utility.error("An error occurred while trying to unfollow user", message); });

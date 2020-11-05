@@ -28,9 +28,9 @@ exports.run = (bot, message, suffix, help) => {
                     embed.setThumbnail(body.hd_profile_pic_url_info.url);
 
                 if (body.full_name && body.full_name.length >= 1)
-                    embed.setDescription(`:white_check_mark: | Lookup result for **@${username}** - ${body.full_name} - ${body.pk}`);
+                    embed.setDescription(`:white_check_mark: | Instagram lookup result for **@${username}** - ${body.full_name} - ${body.pk}`);
                 else
-                    embed.setDescription(`:white_check_mark: | Lookup result for **@${username}**`);
+                    embed.setDescription(`:white_check_mark: | Instagram lookup result for **@${username}** - ${body.pk}`);
 
                 embed.addField("Followers", utility.format(body.follower_count), true);
                 embed.addField("Following", utility.format(body.following_count), true);

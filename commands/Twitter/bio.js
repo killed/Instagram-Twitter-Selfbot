@@ -12,7 +12,7 @@ exports.run = (bot, message, suffix, help) => {
     if (type.toLowerCase() == "twitter") {
         request.post("api.twitter.com", "/1.1/account/update_profile.json", "description=" + bio, config.twitter.authToken, csrfToken).then(body => {
             if (body.indexOf(`description":"${bio}"`) > -1)
-                utility.success(`Successfully updated bio to **${bio}**`, message);
+                utility.success(`Successfully updated Twitter bio to **${bio}**`, message);
             else
                 utility.error("An error occurred while trying update bio", message);
         }).catch(error => { utility.error("An error occurred while trying update bio", message); });

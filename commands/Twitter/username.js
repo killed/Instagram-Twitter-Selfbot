@@ -14,7 +14,7 @@ exports.run = (bot, message, suffix, help) => {
             if (body.indexOf("s\":f") != -1) {
                 request.post("api.twitter.com", "/1.1/account/settings.json", "screen_name=" + username, config.twitter.authToken, csrfToken).then(body => {
                     if (body.indexOf(`screen_name":"${username}"`) > -1)
-                        utility.success(`Successfully updated username to [@${username}](https://instagram.com/${username})`, message);
+                        utility.success(`Successfully updated username to [@${username}](https://instagram.com/${username}) on Twitter`, message);
                     else
                         utility.error("An error occurred while trying update username", message);
                 });
